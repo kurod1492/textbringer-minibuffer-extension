@@ -12,8 +12,8 @@ module Textbringer
         raise EditorError,
           "Command attempted to use minibuffer while in minibuffer"
       end
+      old_buffer = Buffer.current
       old_minibuffer_selected = Window.minibuffer_selected
-      Buffer.minibuffer.clear
       Window.minibuffer_selected = Window.current
       old_completion_proc = Buffer.minibuffer[:completion_proc]
       old_completion_ignore_case = Buffer.minibuffer[:completion_ignore_case]
@@ -31,13 +31,13 @@ module Textbringer
       Window.echo_area.active = true
       begin
         Window.current = Window.echo_area
+        Buffer.minibuffer.clear
+        Buffer.minibuffer.insert(initial_value) if initial_value
         if default
           prompt = prompt.sub(/:/, " (default #{default}):")
         end
         Window.echo_area.prompt = prompt
-        if initial_value
-          Buffer.minibuffer.insert(initial_value)
-        end
+        Window.echo_area.redisplay
         Window.update
         recursive_edit
         s = Buffer.minibuffer.to_s
@@ -54,8 +54,10 @@ module Textbringer
       ensure
         Window.echo_area.clear
         Window.echo_area.redisplay
+        Window.update
         Window.echo_area.active = false
-        Window.current = old_minibuffer_selected
+        Window.current = Window.minibuffer_selected
+        Window.current.buffer = Buffer.current = old_buffer
         Window.minibuffer_selected = old_minibuffer_selected
         Buffer.minibuffer[:completion_ignore_case] = old_completion_ignore_case
         Buffer.minibuffer[:completion_proc] = old_completion_proc
@@ -65,6 +67,7 @@ module Textbringer
         Buffer.minibuffer.keymap = old_minibuffer_map
         Buffer.minibuffer.disable_input_method
         Controller.current.current_prefix_arg = old_current_prefix_arg
+        delete_completions_window
       end
     end
 
