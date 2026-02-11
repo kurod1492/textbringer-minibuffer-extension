@@ -7,12 +7,12 @@ require "textbringer/minibuffer_extension/version"
 Gem::Specification.new do |spec|
   spec.name          = "textbringer-minibuffer-extension"
   spec.version       = Textbringer::MinibufferExtension::VERSION
-  spec.authors       = ["Your Name"]
-  spec.email         = ["your.email@example.com"]
+  spec.authors       = ["Akihiro Kurotani"]
+  spec.email         = ["kurod1492@gmail.com"]
 
   spec.summary       = "Minibuffer extensions for Textbringer."
   spec.description   = "Provides minibuffer history navigation and other enhancements for Textbringer."
-  spec.homepage      = "https://github.com/yourusername/textbringer-minibuffer-extension"
+  spec.homepage      = "https://github.com/kurod1492/textbringer-minibuffer-extension"
   spec.license       = "MIT"
 
   spec.required_ruby_version = ">= 3.2"
