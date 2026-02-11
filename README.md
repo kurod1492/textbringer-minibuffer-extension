@@ -18,23 +18,19 @@ History is automatically saved for:
 
 ## Installation
 
-Add this line to your application's Gemfile:
+### Via git clone
 
-```ruby
-gem 'textbringer-minibuffer-extension'
+Clone this repository to your Textbringer plugins directory:
+
+```bash
+git clone https://github.com/kurod1492/textbringer-minibuffer-extension.git ~/.textbringer/plugins/textbringer-minibuffer-extension
 ```
 
-And then execute:
+### Via rake install
 
-```
-$ bundle install
-```
+After checking out the repo, run `bundle install` to install dependencies.
 
-Or install it yourself as:
-
-```
-$ gem install textbringer-minibuffer-extension
-```
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Configuration
 
