@@ -16,6 +16,17 @@ History is automatically saved for:
 - Buffer names (`:buffer`)
 - Command names (`:command`)
 
+### Tab Completion Cycling
+
+zsh-style tab completion cycling for minibuffer:
+
+- **1st TAB** - Complete to the common prefix and show candidates in `*Completions*` buffer
+- **2nd TAB** (when no further prefix progress) - Start cycling through candidates
+- **Subsequent TABs** - Cycle to the next candidate (wraps around at the end)
+- **Any other key** - Reset cycling state
+
+This replaces the default `complete_minibuffer` command on the TAB key.
+
 ## Installation
 
 ### Via git clone
