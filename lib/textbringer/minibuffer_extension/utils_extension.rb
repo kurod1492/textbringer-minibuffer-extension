@@ -28,6 +28,8 @@ module Textbringer
       Buffer.minibuffer[:history] = history
       Buffer.minibuffer[:history_index] = -1
       Buffer.minibuffer[:history_input] = nil
+      Buffer.minibuffer[:cycle_candidates] = nil
+      Buffer.minibuffer[:cycle_index] = nil
       Window.echo_area.active = true
       begin
         Window.current = Window.echo_area
@@ -64,6 +66,8 @@ module Textbringer
         Buffer.minibuffer[:history] = old_history
         Buffer.minibuffer[:history_index] = old_history_index
         Buffer.minibuffer[:history_input] = old_history_input
+        Buffer.minibuffer[:cycle_candidates] = nil
+        Buffer.minibuffer[:cycle_index] = nil
         Buffer.minibuffer.keymap = old_minibuffer_map
         Buffer.minibuffer.disable_input_method
         Controller.current.current_prefix_arg = old_current_prefix_arg
