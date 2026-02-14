@@ -31,6 +31,20 @@ module Textbringer
       Buffer.minibuffer.insert(list[new_index])
     end
 
+    define_command(:minibuffer_up,
+                   doc: "Navigate up in minibuffer: cycle backward if cycling, else previous history.") do
+      unless cycle_candidates_directly(-1)
+        previous_history_element
+      end
+    end
+
+    define_command(:minibuffer_down,
+                   doc: "Navigate down in minibuffer: cycle forward if cycling, else next history.") do
+      unless cycle_candidates_directly(1)
+        next_history_element
+      end
+    end
+
     define_command(:next_history_element,
                    doc: "Get next element from minibuffer history.") do
       history = Buffer.minibuffer[:history]
