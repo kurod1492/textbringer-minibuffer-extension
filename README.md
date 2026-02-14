@@ -23,9 +23,21 @@ zsh-style tab completion cycling for minibuffer:
 - **1st TAB** - Complete to the common prefix and show candidates in `*Completions*` buffer
 - **2nd TAB** (when no further prefix progress) - Start cycling through candidates
 - **Subsequent TABs** - Cycle to the next candidate (wraps around at the end)
+- **Shift-TAB** - Cycle backward through candidates
 - **Any other key** - Reset cycling state
 
+The currently selected candidate is highlighted in the `*Completions*` buffer.
+
 This replaces the default `complete_minibuffer` command on the TAB key.
+
+### Context-Aware Arrow Keys
+
+The Up/Down arrow keys intelligently switch behavior based on context:
+
+- **During completion cycling** - Up/Down move backward/forward through candidates (same as Shift-TAB/TAB)
+- **Otherwise** - Up/Down navigate through minibuffer history (same as M-p/M-n)
+
+This allows seamless navigation: start cycling with TAB, then use arrow keys to fine-tune your selection.
 
 ## Installation
 
