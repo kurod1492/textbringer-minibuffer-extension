@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Provides minibuffer history navigation and other enhancements for Textbringer."
   spec.homepage      = "https://github.com/kurod1492/textbringer-minibuffer-extension"
   spec.license       = "MIT"
+  spec.metadata      = { "rubygems_mfa_required" => "true" }
 
   spec.required_ruby_version = ">= 3.2"
 
